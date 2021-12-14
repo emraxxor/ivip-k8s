@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ivip-web-discovery
+  name: ivip-web-discovery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivip-web-discovery
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ivip-web-discovery
+    spec:
+      containers:
+      - image: ivip/ivip-web-discovery
+        imagePullPolicy: IfNotPresent
+        name: ivip-web-discovery
+        resources: {}
+status: {}

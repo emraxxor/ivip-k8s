@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ivip-keycloak
+  name: ivip-keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivip-keycloak
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ivip-keycloak
+    spec:
+      containers:
+      - image: quay.io/keycloak/keycloak:11.0.2
+        name: keycloak
+        resources: {}
+        env:
+          - name: KEYCLOAK_USER
+            value: admin
+          - name: KEYCLOAK_PASSWORD
+            value: admin
+status: {}

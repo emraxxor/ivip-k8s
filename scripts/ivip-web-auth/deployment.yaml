@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ivip-web-auth
+  annotations:
+    co.elastic.logs/enabled: "true"
+    co.elastic.logs.json-logging/json.keys_under_root: "true"
+    co.elastic.logs.json-logging/json.add_error_key: "true"
+    co.elastic.logs.json-logging/json.message_key: "message"
+  name: ivip-web-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivip-web-auth
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ivip-web-auth
+    spec:
+      containers:
+      - image: ivip/ivip-web-auth
+        imagePullPolicy: IfNotPresent
+        name: ivip-web-auth
+        resources: {}
+status: {}

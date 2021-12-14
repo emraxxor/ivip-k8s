@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ivip-postgres
+  name: ivip-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivip-postgres
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ivip-postgres
+    spec:
+      containers:
+      - image: postgres
+        name: postgres
+        resources: {}
+        env:
+          - name: POSTGRES_PASSWORD
+            value: postgres
+status: {}
