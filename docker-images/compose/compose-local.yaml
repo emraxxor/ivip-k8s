@@ -1,5 +1,29 @@
 version: '3.8'
 services:
+    ivip-pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@localhost.localdomain
+            PGADMIN_DEFAULT_PASSWORD: admin
+        ports:
+          - 15080:80
+        networks:
+          - ${GLOBAL_NETWORK:-application}
+    ivip-keycloak:
+        image: jboss/keycloak:${KEYCLOAK_VERSION:-11.0.2}
+        ports:
+          - 16080:8080
+        environment:
+            KEYCLOAK_USER: admin
+            KEYCLOAK_PASSWORD: admin
+        networks:
+          - ${GLOBAL_NETWORK:-application}
+    ivip-nexus:
+        image: sonatype/nexus3
+        ports:
+          - 15081:8081
+        networks:
+          - ${GLOBAL_NETWORK:-application}
     ivip-postgres:
         image: postgres:${POSTGRESQL_VERSION:-14.1}
         environment:
