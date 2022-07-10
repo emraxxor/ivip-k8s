@@ -1,0 +1,17 @@
+Kubernetes apiVersion: v1
+kind: Service
+metadata:
+  name: ivip-kafka
+spec:
+  selector:
+    app: ivip-kafka
+  type: ClusterIP
+  ports:
+  - port: 8081
+    targetPort: 8081
+  - port: 19092
+    targetPort: 19092
+  - port: 29092
+    targetPort: 29092
+  - port: 39092
+    targetPort: 39092
