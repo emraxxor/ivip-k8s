@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivip-nexus
+spec:
+  selector:
+    matchLabels:
+      app: ivip-nexus
+  template:
+    metadata:
+      labels:
+        app: ivip-nexus
+    spec:
+      containers:
+      - name: ivip-nexus
+        image: sonatype/nexus3
