@@ -51,6 +51,16 @@ services:
           - ivip-elasticsearch
         networks:
           - ${GLOBAL_NETWORK:-application}
+    ivip-neo4j:
+        image: neo4j:${NEO4J_VERSION:-4.3.6}
+        container_name: ivip-neo4j
+        environment:
+          - NEO4J_AUTH=neo4j/password
+          - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+        ports:
+          - "7474:7474"
+          - "7687:7687"
+
     filebeat:
         image: docker.elastic.co/beats/filebeat:${ELASTICSEARCH_VERSION:-7.9.3}
         volumes:
